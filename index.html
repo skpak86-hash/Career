@@ -366,6 +366,132 @@
     text-transform: uppercase;
   }
 
+  /* SKILLS */
+  .skills-domain-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .domain-card {
+    background: linear-gradient(160deg, rgba(17,34,68,0.7), rgba(10,22,40,0.8));
+    border: 1px solid rgba(46,125,209,0.15);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .domain-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .domain-card:nth-child(1)::after { background: linear-gradient(90deg, #1e5fa8, #2e7dd1); }
+  .domain-card:nth-child(2)::after { background: linear-gradient(90deg, #2e7dd1, #5ba3e8); }
+  .domain-card:nth-child(3)::after { background: linear-gradient(90deg, #5ba3e8, #c9a84c); }
+  .domain-card:nth-child(4)::after { background: linear-gradient(90deg, #c9a84c, #f0cc7a); }
+  .domain-card:nth-child(5)::after { background: linear-gradient(90deg, #f0cc7a, #c9a84c); }
+
+  .domain-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(46,125,209,0.4);
+  }
+
+  .domain-years {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .domain-card:nth-child(1) .domain-years { color: #2e7dd1; }
+  .domain-card:nth-child(2) .domain-years { color: #5ba3e8; }
+  .domain-card:nth-child(3) .domain-years { color: #a8cbf0; }
+  .domain-card:nth-child(4) .domain-years { color: var(--gold); }
+  .domain-card:nth-child(5) .domain-years { color: var(--gold-light); }
+
+  .domain-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+
+  .domain-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .domain-period {
+    font-size: 0.75rem;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .skills-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: rgba(17,34,68,0.4);
+    border: 1px solid rgba(46,125,209,0.12);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    background: rgba(30,95,168,0.2);
+    border: 1px solid rgba(46,125,209,0.25);
+    border-radius: 20px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.75rem;
+    color: var(--mist);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .skill-pill:hover {
+    background: rgba(46,125,209,0.35);
+    border-color: var(--foam);
+    color: var(--white);
+  }
+
   /* TIMELINE / EXPERIENCE */
   .timeline {
     position: relative;
@@ -635,9 +761,10 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">S. Pak</div>
+  <div class="nav-logo">Sangkyu Pak</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -663,7 +790,7 @@
       Sangkyu<br>
       <span>Pak</span>
     </h1>
-    <p class="hero-title">Marine Project Leader</p>
+    <p class="hero-title">Maritime & Project Management Professional</p>
     <p class="hero-desc">
       16 years of maritime expertise spanning vessel operations, marine engine service,
       project engineering, and electrification — from open seas to hybrid power systems.
@@ -675,7 +802,7 @@
       </div>
       <div class="stat-item">
         <div class="stat-num">50+</div>
-        <div class="stat-label">Vessels Managed</div>
+        <div class="stat-label">Vessels & Projects Managed</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">4</div>
@@ -704,22 +831,30 @@
         Graduating from <strong>Korea Maritime & Ocean University</strong> in 2010 with a Bachelor's in Marine System Engineering, I began my career at sea as a Marine Engineer with Hanjin Shipping — operating container vessels up to 13,100 TEU across the globe.
       </p>
       <p>
-        From the engine room to the boardroom, my career has evolved through marine engine technical service at <strong>Hyundai Global Service</strong>, vessel management at <strong>Crowley Maritime</strong>, and now leading marine electrification and NPI programs at <strong>Caterpillar</strong>.
+        From the engine room to the boardroom, my career has evolved through marine engine technical service at <strong>NSCA Engine Service & Hyundai Global Service</strong>, vessel management and project engineering at <strong>Crowley Maritime</strong>, and now leading marine electrification projects for marine customers at <strong>Caterpillar</strong>.
       </p>
       <p>
         Bilingual in English and Korean, I bridge technical expertise with cross-cultural communication — serving as a liaison between engineering teams and customers worldwide.
       </p>
       <p style="margin-top: 2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">
-        📍 Houston, TX &nbsp;|&nbsp; Korea Maritime & Ocean University, B.Eng 2010
+        📍 Houston, TX &nbsp;|&nbsp; Korea Maritime & Ocean University, B.Eng 2010 · South Korea
       </p>
     </div>
 
     <div class="fade-in" style="transition-delay: 0.2s">
       <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Certifications & Licenses</p>
-      <div class="certs-grid">
+      <div class="certs-grid" style="grid-template-columns: repeat(3, 1fr)">
         <div class="cert-card">
-          <div class="cert-icon">🏅</div>
-          <div class="cert-name">2nd Class Engineer<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span></div>
+          <div style="margin-bottom:0.5rem; font-size:1.4rem;">🛳️</div>
+          <div class="cert-name">2nd & 3rd Class Marine Engineer<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span></div>
+        </div>
+        <div class="cert-card" style="border-color:rgba(201,168,76,0.3);">
+          <div style="margin-bottom:0.5rem;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:900; letter-spacing:-0.02em;">
+              <span style="color:#e84b2a;">P</span><span style="color:#00a9e0;">M</span><span style="color:#6b2d8b;">P</span><span style="color:var(--gold); font-size:0.8rem; vertical-align:super;">®</span>
+            </span>
+          </div>
+          <div class="cert-name">Project Management<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Professional · PMI</span></div>
         </div>
         <div class="cert-card">
           <div class="cert-icon">⚙️</div>
@@ -731,8 +866,110 @@
         </div>
         <div class="cert-card">
           <div class="cert-icon">🪪</div>
-          <div class="cert-name">TWIC &<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">RigPass / BOSIET</span></div>
+          <div class="cert-name">TWIC / RigPass / BOSIET<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Safety & Access Credentials</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills & Expertise</div>
+  <h2 class="section-title">16 years of <em>domain mastery</em></h2>
+
+  <div class="skills-domain-grid fade-in">
+    <div class="domain-card">
+      <div class="domain-years">5</div>
+      <div class="domain-label">Years</div>
+      <div class="domain-title">Vessel Operation</div>
+      <div class="domain-period">2010 – 2014</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-years">4</div>
+      <div class="domain-label">Years</div>
+      <div class="domain-title">Marine Engine Service</div>
+      <div class="domain-period">2014 – 2019</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-years">2</div>
+      <div class="domain-label">Years</div>
+      <div class="domain-title">Vessel Management</div>
+      <div class="domain-period">2019 – 2020</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-years">3</div>
+      <div class="domain-label">Years</div>
+      <div class="domain-title">Project Engineering</div>
+      <div class="domain-period">2020 – 2023</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-years">2+</div>
+      <div class="domain-label">Years</div>
+      <div class="domain-title">Marine Electrification</div>
+      <div class="domain-period">2023 – Present</div>
+    </div>
+  </div>
+
+  <div class="skills-tech-grid fade-in" style="transition-delay:0.2s">
+    <div class="skill-group">
+      <div class="skill-group-title">⚙️ &nbsp;Marine Engineering</div>
+      <div class="skill-list">
+        <span class="skill-pill">2-Stroke Propulsion</span>
+        <span class="skill-pill">4-Stroke Genset</span>
+        <span class="skill-pill">Wärtsilä</span>
+        <span class="skill-pill">MAN</span>
+        <span class="skill-pill">HHI-HIMSEN</span>
+        <span class="skill-pill">Caterpillar</span>
+        <span class="skill-pill">Power Management System</span>
+        <span class="skill-pill">Fuel Management</span>
+        <span class="skill-pill">Hydraulic Systems</span>
+        <span class="skill-pill">Aux Boiler 7K</span>
+        <span class="skill-pill">Fresh Water Generator</span>
+        <span class="skill-pill">Power Plant Operation</span>
+        <span class="skill-pill">HVAC</span>
+        <span class="skill-pill">Refer Container</span>
+        <span class="skill-pill">Marine Electrician</span>
+        <span class="skill-pill">Container Ship</span>
+        <span class="skill-pill">ATB Tug & Barge</span>
+        <span class="skill-pill">Product Tanker</span>
+        <span class="skill-pill">Con-Ro LNG Powered Ship</span>
+        <span class="skill-pill">Heavy Lifting Vessel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">📋 &nbsp;Project Management</div>
+      <div class="skill-list">
+        <span class="skill-pill">Project Lifecycle Management</span>
+        <span class="skill-pill">Project Engineering</span>
+        <span class="skill-pill">Retrofit & Modification</span>
+        <span class="skill-pill">Shipyard Management</span>
+        <span class="skill-pill">Risk Management</span>
+        <span class="skill-pill">Budget Control</span>
+        <span class="skill-pill">Resource Planning</span>
+        <span class="skill-pill">Schedule Management</span>
+        <span class="skill-pill">Procurement Support</span>
+        <span class="skill-pill">Stakeholder Management</span>
+        <span class="skill-pill">Dry Dock Specs</span>
+        <span class="skill-pill">MCS Rule/Regulation</span>
+        <span class="skill-pill">USCG Compliance</span>
+        <span class="skill-pill">NPI Process</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">⚡ &nbsp;Electrification & Innovation</div>
+      <div class="skill-list">
+        <span class="skill-pill">Hybrid Marine Systems</span>
+        <span class="skill-pill">Battery Integration</span>
+        <span class="skill-pill">NPI Program</span>
+        <span class="skill-pill">Alternative Fuel</span>
+        <span class="skill-pill">System Design</span>
+        <span class="skill-pill">Technical Training</span>
+        <span class="skill-pill">Bilingual (EN/KO)</span>
+        <span class="skill-pill">Dealer Relations</span>
+        <span class="skill-pill">Customer Facing</span>
       </div>
     </div>
   </div>
@@ -751,7 +988,7 @@
       <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);"></div>
       <div class="timeline-period">2023 – Present</div>
       <div class="timeline-company">Caterpillar Inc.</div>
-      <div class="timeline-role">Project Leader · Marine Innovation Team</div>
+      <div class="timeline-role">Project Leader · Marine Technical Team</div>
       <div class="timeline-desc">
         Leading NPI and Hybrid Power projects within Caterpillar's Marine Division R&D team.
         Managing planning, scheduling, and resource allocation for technical demonstration projects
@@ -771,7 +1008,7 @@
       <div class="timeline-dot"></div>
       <div class="timeline-period">2020 – 2023</div>
       <div class="timeline-company">Crowley Maritime</div>
-      <div class="timeline-role">Project Engineer · Ballast Water Treatment Program</div>
+      <div class="timeline-role">Project Engineer · Vessel Retrofit & Modification</div>
       <div class="timeline-desc">
         Managed the full project lifecycle for Crowley's BWTS retrofit program — covering 40+ internal
         fleet vessels and 10+ external customer ships. Responsibilities included design development with
@@ -791,7 +1028,7 @@
       <div class="timeline-dot"></div>
       <div class="timeline-period">2019 – 2020</div>
       <div class="timeline-company">Crowley Maritime</div>
-      <div class="timeline-role">Assistant Port Engineer</div>
+      <div class="timeline-role">Assistant Port Engineer · Vessel Management</div>
       <div class="timeline-desc">
         Supported Port Engineers across multiple Crowley divisions (CPS, GSM, Procurement, Engineering)
         in developing dry dock specifications, procurement coordination, crew communications,
