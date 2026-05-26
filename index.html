@@ -1,333 +1,948 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sangkyu Pak | Maritime & Project Management Professional</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        .hero-gradient { background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #3a506b 100%); }
-        .card-hover:hover { transform: translateY(-4px); transition: all 0.3s ease; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sangkyu Pak — Maritime Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #061020;
+    --mid: #112244;
+    --steel: #1a3a6b;
+    --ocean: #1e5fa8;
+    --wave: #2e7dd1;
+    --foam: #5ba3e8;
+    --mist: #a8cbf0;
+    --light: #e8f2fc;
+    --gold: #c9a84c;
+    --gold-light: #f0cc7a;
+    --white: #f4f8fd;
+    --gray: #8aabbf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(6,16,32,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--mist);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-ocean {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(30, 95, 168, 0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(46, 125, 209, 0.2) 0%, transparent 50%),
+      linear-gradient(160deg, #061020 0%, #0a1628 40%, #0d2040 70%, #061020 100%);
+  }
+
+  /* animated wave lines */
+  .wave-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.15;
+  }
+
+  .wave-lines svg {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    animation: wavemove 12s linear infinite;
+  }
+
+  .wave-lines svg:nth-child(2) {
+    animation-delay: -4s;
+    animation-duration: 16s;
+    opacity: 0.5;
+  }
+
+  @keyframes wavemove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(46,125,209,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,125,209,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 4rem;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--foam);
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray);
+    max-width: 540px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+  }
+
+  .stat-item { text-align: left; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.3rem;
+  }
+
+  .hero-badge {
+    position: absolute;
+    right: 6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    animation: fadeIn 1.5s 1.3s forwards;
+  }
+
+  .badge-ring {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: spin 30s linear infinite;
+  }
+
+  .badge-ring::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(91, 163, 232, 0.2);
+  }
+
+  .badge-inner {
+    text-align: center;
+    animation: spin 30s linear infinite reverse;
+  }
+
+  .badge-inner .bi {
+    font-size: 2.5rem;
+    color: var(--foam);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .badge-inner span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 7rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4rem;
+    color: var(--white);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--foam);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p strong {
+    color: var(--mist);
+    font-weight: 500;
+  }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: rgba(17, 34, 68, 0.6);
+    border: 1px solid rgba(46, 125, 209, 0.2);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .cert-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+    transform: translateY(-3px);
+  }
+
+  .cert-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cert-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--mist);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* TIMELINE / EXPERIENCE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--wave), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    padding-left: 2.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.4rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--wave);
+    border: 2px solid var(--deep);
+    box-shadow: 0 0 0 4px rgba(46,125,209,0.2);
+  }
+
+  .timeline-period {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foam);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: rgba(30, 95, 168, 0.25);
+    border: 1px solid rgba(46, 125, 209, 0.3);
+    border-radius: 3px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.7rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--foam);
+  }
+
+  /* PROJECTS HIGHLIGHT */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: linear-gradient(135deg, rgba(17,34,68,0.8), rgba(10,22,40,0.9));
+    border: 1px solid rgba(46, 125, 209, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ocean), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(46, 125, 209, 0.4);
+  }
+
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .project-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(46,125,209,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 0.8rem;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .project-highlight {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(46, 125, 209, 0.15);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: linear-gradient(135deg, rgba(17,34,68,0.5), rgba(26,58,107,0.3));
+    border: 1px solid rgba(46, 125, 209, 0.15);
+    border-radius: 16px;
+    padding: 4rem;
+    text-align: center;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.9rem 2rem;
+    border: 1px solid rgba(46, 125, 209, 0.4);
+    border-radius: 6px;
+    color: var(--mist);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .contact-link:hover {
+    background: rgba(46, 125, 209, 0.2);
+    border-color: var(--wave);
+    color: var(--white);
+  }
+
+  .contact-link.primary {
+    background: linear-gradient(135deg, var(--ocean), var(--steel));
+    border-color: transparent;
+    color: var(--white);
+  }
+
+  .contact-link.primary:hover {
+    background: linear-gradient(135deg, var(--wave), var(--ocean));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 95, 168, 0.4);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(46, 125, 209, 0.1);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(138, 171, 191, 0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(46,125,209,0.3), transparent);
+    margin: 0 4rem;
+  }
+
+  /* SCROLL OBSERVER */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    section { padding: 5rem 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-content { padding: 0 2rem; }
+    .hero-badge { display: none; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    .contact-section { padding: 2.5rem 1.5rem; }
+  }
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body>
 
-    <nav class="fixed top-0 left-0 right-0 bg-slate-900/95 text-white backdrop-blur-md z-50 border-b border-slate-800 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-extrabold tracking-wider text-cyan-400">SANGKYU PAK</a>
-            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">Profile</a>
-                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Key Projects</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills & Licenses</a>
-            </div>
-            <a href="mailto:skpak86@gmail.com" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-cyan-500/20">Contact</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">S. Pak</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ocean"></div>
+  <div class="hero-grid"></div>
+  <div class="wave-lines">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" height="120">
+      <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" fill="rgba(30,95,168,0.15)"/>
+    </svg>
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" height="120">
+      <path d="M0,80 C360,40 720,100 1080,40 C1260,20 1380,70 1440,60 L1440,120 L0,120 Z" fill="rgba(46,125,209,0.08)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-tag">⚓ Maritime · Engineering · Innovation</p>
+    <h1 class="hero-name">
+      Sangkyu<br>
+      <span>Pak</span>
+    </h1>
+    <p class="hero-title">Marine Project Leader</p>
+    <p class="hero-desc">
+      16 years of maritime expertise spanning vessel operations, marine engine service,
+      project engineering, and electrification — from open seas to hybrid power systems.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">16</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Vessels Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Career Domains</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <div class="badge-ring">
+      <div class="badge-inner">
+        <span style="font-size:2.5rem;">⚓</span>
+        <span>Marine Engineer</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">Engineer by training,<br><em>Leader by experience</em></h2>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>
+        Graduating from <strong>Korea Maritime & Ocean University</strong> in 2010 with a Bachelor's in Marine System Engineering, I began my career at sea as a Marine Engineer with Hanjin Shipping — operating container vessels up to 13,100 TEU across the globe.
+      </p>
+      <p>
+        From the engine room to the boardroom, my career has evolved through marine engine technical service at <strong>Hyundai Global Service</strong>, vessel management at <strong>Crowley Maritime</strong>, and now leading marine electrification and NPI programs at <strong>Caterpillar</strong>.
+      </p>
+      <p>
+        Bilingual in English and Korean, I bridge technical expertise with cross-cultural communication — serving as a liaison between engineering teams and customers worldwide.
+      </p>
+      <p style="margin-top: 2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">
+        📍 Houston, TX &nbsp;|&nbsp; Korea Maritime & Ocean University, B.Eng 2010
+      </p>
+    </div>
+
+    <div class="fade-in" style="transition-delay: 0.2s">
+      <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Certifications & Licenses</p>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🏅</div>
+          <div class="cert-name">2nd Class Engineer<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span></div>
         </div>
-    </nav>
-
-    <section class="hero-gradient text-white pt-36 pb-24 px-4 shadow-inner">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 items-center">
-            <div class="md:col-span-2 space-y-6">
-                <span class="bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs px-4 py-1.5 rounded-full font-bold uppercase tracking-widest">Interactive Portfolio</span>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">Sangkyu Pak</h1>
-                <p class="text-xl md:text-2xl text-cyan-300/90 font-medium">Maritime & Project Management Professional</p>
-                <p class="text-slate-300 max-w-2xl text-base leading-relaxed font-light">
-                    Over 16 years of progressive technical and management expertise across the maritime lifecycle. From hands-on deep-sea vessel operations to leading high-priority **Marine Hybrid Electrification (NPI)** and alternative fuel programs at Caterpillar. Adept at navigating regulatory framework (USCG, Classification Societies, IMO) to deliver complex retrofits and sustainable engineering solutions on time and within budget.
-                </p>
-                <div class="pt-4 flex flex-wrap gap-4">
-                    <a href="mailto:skpak86@gmail.com" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-3 rounded-xl font-bold transition-all text-sm shadow-lg shadow-cyan-500/10"><i class="fas fa-envelope mr-2"></i>skpak86@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/sbrianpak" target="_blank" class="bg-slate-800/80 hover:bg-slate-700/80 text-white px-6 py-3 rounded-xl font-bold transition-all text-sm border border-slate-700"><i class="fab fa-linkedin mr-2"></i>LinkedIn Profile</a>
-                </div>
-            </div>
-            <div class="bg-slate-900/60 backdrop-blur-md border border-slate-800 p-6 rounded-2xl space-y-4 shadow-2xl">
-                <h3 class="text-sm uppercase tracking-widest font-bold text-cyan-400 border-b border-slate-800 pb-3"><i class="fas fa-id-card mr-2"></i>Technical Summary</h3>
-                <div class="space-y-3 text-sm text-slate-300">
-                    <p class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-cyan-400 w-5"></i> Houston, TX, USA</p>
-                    <p class="flex items-center gap-3"><i class="fas fa-phone text-cyan-400 w-5"></i> +1 832-421-3600</p>
-                    <p class="flex items-center gap-3"><i class="fas fa-shield-alt text-cyan-400 w-5"></i> TWIC Security Cleared</p>
-                    <p class="flex items-center gap-3"><i class="fas fa-graduation-cap text-cyan-400 w-5"></i> B.Eng. Marine System Engineering</p>
-                </div>
-                <div class="pt-2">
-                    <span class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Total Competency Duration</span>
-                    <div class="bg-slate-800 rounded-full h-2">
-                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 100%"></div>
-                    </div>
-                    <div class="flex justify-between text-xs font-bold text-cyan-400 mt-1">
-                        <span>Started 2010</span>
-                        <span>16+ Years Expertise (As of 2026)</span>
-                    </div>
-                </div>
-            </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚙️</div>
+          <div class="cert-name">HHI-HIMSEN<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Advanced Course</span></div>
         </div>
-    </section>
-
-    <section id="about" class="py-16 px-4 max-w-6xl mx-auto">
-        <div class="text-center md:text-left mb-10">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Structured Career History</h2>
-            <p class="text-slate-500 text-sm mt-1">Five core pillars representing an end-to-end maritime execution track record.</p>
+        <div class="cert-card">
+          <div class="cert-icon">🛡️</div>
+          <div class="cert-name">Engine Room<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Resource Management</span></div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200/60 text-center card-hover">
-                <div class="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold">01</div>
-                <span class="block text-xl font-bold text-slate-900">5 Years</span>
-                <span class="text-[11px] text-slate-500 uppercase font-bold tracking-wider block mt-1">Vessel Operation<br>(2010 - 2014)</span>
-            </div>
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200/60 text-center card-hover">
-                <div class="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold">02</div>
-                <span class="block text-xl font-bold text-slate-900">4 Years</span>
-                <span class="text-[11px] text-slate-500 uppercase font-bold tracking-wider block mt-1">Marine Engine Service<br>(2014 - 2019)</span>
-            </div>
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200/60 text-center card-hover">
-                <div class="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold">03</div>
-                <span class="block text-xl font-bold text-slate-900">2 Years</span>
-                <span class="text-[11px] text-slate-500 uppercase font-bold tracking-wider block mt-1">Vessel Management<br>(2019 - 2020)</span>
-            </div>
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200/60 text-center card-hover">
-                <div class="w-10 h-10 bg-cyan-50 text-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold">04</div>
-                <span class="block text-xl font-bold text-slate-900">3 Years</span>
-                <span class="text-[11px] text-slate-500 uppercase font-bold tracking-wider block mt-1">Project Engineering<br>(2020 - 2023)</span>
-            </div>
-            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200/60 text-center card-hover col-span-2 md:col-span-1">
-                <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-3 font-bold"><i class="fas fa-bolt"></i></div>
-                <span class="block text-xl font-bold text-emerald-600">Active</span>
-                <span class="text-[11px] text-slate-500 uppercase font-bold tracking-wider block mt-1">Electrification PM<br>(2023 - Present)</span>
-            </div>
+        <div class="cert-card">
+          <div class="cert-icon">🪪</div>
+          <div class="cert-name">TWIC &<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">RigPass / BOSIET</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="experience" class="py-20 bg-slate-100 px-4 border-y border-slate-200/60">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-12 border-l-4 border-cyan-500 pl-4 tracking-tight">Professional Experience</h2>
-            
-            <div class="space-y-10 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:w-0.5 before:bg-slate-300">
-                
-                <div class="relative flex flex-col md:flex-row items-start justify-between">
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-cyan-500 transform -translate-x-1/2 border-4 border-white z-10 shadow"></div>
-                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-right order-2 md:order-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                        <span class="text-xs text-cyan-600 font-bold tracking-widest uppercase bg-cyan-50 px-2 py-1 rounded">Nov 2023 - PRESENT</span>
-                        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Project Leader</h3>
-                        <p class="text-sm font-bold text-slate-600 mb-4">Caterpillar Inc. | Marine Innovation Team (Houston, TX)</p>
-                        <p class="text-sm text-slate-500 leading-relaxed text-left md:text-right">
-                            Leading technical orchestration within the NPI (New Product Introduction) and R&D Marine Innovation framework. Spearheading commercial demonstration and technical integration of complex alternative fuel engines and hybrid assets.
-                        </p>
-                        <ul class="text-xs text-slate-600 space-y-2 mt-3 list-disc list-inside md:list-none text-left md:text-right">
-                            <li>Manage NPI/Hybrid Power roadmap planning, resource allocation, and multi-million dollar parameters. <i class="hidden md:inline fas fa-check text-cyan-500 ml-1"></i></li>
-                            <li>Formulate global risk management controls and execution plans for technical retrofits. <i class="hidden md:inline fas fa-check text-cyan-500 ml-1"></i></li>
-                            <li>Direct integration matrices binding Cat engines with advanced battery topology, inverters, and drive motors. <i class="hidden md:inline fas fa-check text-cyan-500 ml-1"></i></li>
-                            <li>Synchronize technical pathways across international shipyards, dealers, and key class approval circles. <i class="hidden md:inline fas fa-check text-cyan-500 ml-1"></i></li>
-                        </ul>
-                    </div>
-                    <div class="hidden md:block w-5/12"></div>
-                </div>
+<div class="divider"></div>
 
-                <div class="relative flex flex-col md:flex-row items-start justify-between">
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-slate-400 transform -translate-x-1/2 border-4 border-white z-10 shadow"></div>
-                    <div class="hidden md:block w-5/12"></div>
-                    <div class="w-full md:w-5/12 pl-10 order-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                        <span class="text-xs text-slate-500 font-bold tracking-widest uppercase bg-slate-100 px-2 py-1 rounded">Dec 2020 - Nov 2023</span>
-                        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Project Engineer</h3>
-                        <p class="text-sm font-bold text-slate-600 mb-4">Crowley Maritime | Crowley Engineering Services</p>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                            Owned full-cycle engineering, technical sourcing, and regulatory execution for fleet modification schemes, heavily focused on Ballast Water Treatment System (BWTS) deployments.
-                        </p>
-                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
-                            <li>Managed continuous lifecycle deployment of BWTS assets across 40 internal fleet vessels and 10+ external clients.</li>
-                            <li>Collaborated continuously with naval architects on drawing validations and modifications.</li>
-                            <li>Orchestrated technical vendor screening and optimized parts logistics to ensure compliance during shipyard drydocks.</li>
-                        </ul>
-                    </div>
-                </div>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">A career built<br><em>on the water</em></h2>
 
-                <div class="relative flex flex-col md:flex-row items-start justify-between">
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-slate-400 transform -translate-x-1/2 border-4 border-white z-10 shadow"></div>
-                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-right order-2 md:order-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                        <span class="text-xs text-slate-500 font-bold tracking-widest uppercase bg-slate-100 px-2 py-1 rounded">Feb 2019 - Dec 2020</span>
-                        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Assistant Port Engineer</h3>
-                        <p class="text-sm font-bold text-slate-600 mb-4">Crowley Maritime | Crowley Shipping</p>
-                        <p class="text-sm text-slate-500 leading-relaxed text-left md:text-right">
-                            Bridged shipboard engineering crews with drydock execution management, ensuring high reliability indicators for tankers and complex logistics fleets.
-                        </p>
-                        <ul class="text-xs text-slate-600 space-y-2 mt-3 list-disc list-inside md:list-none text-left md:text-right">
-                            <li>Compiled strict dry-dock specification packages, cost matrices, and major service orders. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                            <li>Served as primary single point of contact for vessel mechanical crews to expedite parts. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                            <li>Maintained precise structural control over technical maintenance budgets. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                        </ul>
-                    </div>
-                    <div class="hidden md:block w-5/12"></div>
-                </div>
+  <div class="timeline">
 
-                <div class="relative flex flex-col md:flex-row items-start justify-between">
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-slate-400 transform -translate-x-1/2 border-4 border-white z-10 shadow"></div>
-                    <div class="hidden md:block w-5/12"></div>
-                    <div class="w-full md:w-5/12 pl-10 order-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                        <span class="text-xs text-slate-500 font-bold tracking-widest uppercase bg-slate-100 px-2 py-1 rounded">2014 - 2019</span>
-                        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Technical Manager / Engine Service Engineer</h3>
-                        <p class="text-sm font-bold text-slate-600 mb-4">Hyundai Global Service / NSCA Engine Service Inc</p>
-                        <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                            Delivered advanced field troubleshooting, technical supervision, and critical engine maintenance for heavy marine systems globally.
-                        </p>
-                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
-                            <li>Supervised major drydock mechanical overhauls for both 2-stroke and 4-stroke marine prime movers.</li>
-                            <li>Headed root-cause engineering analysis regarding severe component warranty failures.</li>
-                            <li>Optimized large warehouse technical layouts and component sourcing configurations.</li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);"></div>
+      <div class="timeline-period">2023 – Present</div>
+      <div class="timeline-company">Caterpillar Inc.</div>
+      <div class="timeline-role">Project Leader · Marine Innovation Team</div>
+      <div class="timeline-desc">
+        Leading NPI and Hybrid Power projects within Caterpillar's Marine Division R&D team.
+        Managing planning, scheduling, and resource allocation for technical demonstration projects
+        involving hybrid marine vessel systems — integrating Cat engines with batteries, inverters,
+        and motors. Supporting alternative fuel engine development and Cat-designed battery programs.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Hybrid Systems</span>
+        <span class="tag">NPI Program</span>
+        <span class="tag">Project Management</span>
+        <span class="tag">Electrification</span>
+        <span class="tag">Alternative Fuel</span>
+      </div>
+    </div>
 
-                <div class="relative flex flex-col md:flex-row items-start justify-between">
-                    <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-slate-400 transform -translate-x-1/2 border-4 border-white z-10 shadow"></div>
-                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-right order-2 md:order-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                        <span class="text-xs text-slate-500 font-bold tracking-widest uppercase bg-slate-100 px-2 py-1 rounded">2010 - 2014</span>
-                        <h3 class="text-xl font-extrabold text-slate-900 mt-2">Marine Engineer (1st / 2nd / 3rd Officer)</h3>
-                        <p class="text-sm font-bold text-slate-600 mb-4">Hanjin Shipping | Container Fleet Team</p>
-                        <p class="text-xs text-cyan-600 font-mono mb-2">Deployed on 8 Ultra-Large Container Ships (up to 13,100 TEU)</p>
-                        <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside md:list-none text-left md:text-right">
-                            <li>Directly operated high-output 2-stroke main propulsion units and high-voltage grid layouts. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                            <li>Managed automated Power Management Systems (PMS) and synchronized safety switchgear. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                            <li>Executed optimized fuel bunkering regimens, treatment loops, and environmental tracking tasks. <i class="hidden md:inline fas fa-check text-slate-400 ml-1"></i></li>
-                        </ul>
-                    </div>
-                    <div class="hidden md:block w-5/12"></div>
-                </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2020 – 2023</div>
+      <div class="timeline-company">Crowley Maritime</div>
+      <div class="timeline-role">Project Engineer · Ballast Water Treatment Program</div>
+      <div class="timeline-desc">
+        Managed the full project lifecycle for Crowley's BWTS retrofit program — covering 40+ internal
+        fleet vessels and 10+ external customer ships. Responsibilities included design development with
+        Naval Architects, Class/USCG approval coordination (ABS), material sourcing, shipyard
+        management, installation supervision, and final commissioning.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">BWTS</span>
+        <span class="tag">Naval Architecture</span>
+        <span class="tag">ABS Class Approval</span>
+        <span class="tag">Shipyard Management</span>
+        <span class="tag">USCG</span>
+      </div>
+    </div>
 
-            </div>
-        </div>
-    </section>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2019 – 2020</div>
+      <div class="timeline-company">Crowley Maritime</div>
+      <div class="timeline-role">Assistant Port Engineer</div>
+      <div class="timeline-desc">
+        Supported Port Engineers across multiple Crowley divisions (CPS, GSM, Procurement, Engineering)
+        in developing dry dock specifications, procurement coordination, crew communications,
+        and maintenance cost analysis. Attended vessel dry dockings and supported fleet reliability projects.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Dry Dock</span>
+        <span class="tag">Procurement</span>
+        <span class="tag">Fleet Management</span>
+        <span class="tag">Cost Analysis</span>
+      </div>
+    </div>
 
-    <section id="projects" class="py-20 px-4 max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Key Portfolio Projects</h2>
-            <p class="text-slate-500 text-sm mt-1">Deep-dive highlights compiled directly from recent corporate execution profiles.</p>
-        </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2014 – 2019</div>
+      <div class="timeline-company">NSCA / Hyundai Global Service</div>
+      <div class="timeline-role">Technical Manager · Marine Engine Service</div>
+      <div class="timeline-desc">
+        Provided comprehensive technical support for Hyundai 2-stroke and 4-stroke engine customers.
+        Conducted onboard warranty visits, root cause investigations, and acted as the bilingual
+        liaison between Hyundai HQ and customers. Supported internal sales by developing parts lists
+        for overhaul programs and coordinating the service scheduling team.
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">HHI-HIMSEN</span>
+        <span class="tag">2-Stroke Engine</span>
+        <span class="tag">4-Stroke Engine</span>
+        <span class="tag">Technical Support</span>
+        <span class="tag">Bilingual</span>
+      </div>
+    </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between card-hover">
-                <div>
-                    <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center text-xl mb-4 shadow-sm"><i class="fas fa-charging-station"></i></div>
-                    <h4 class="text-lg font-bold text-slate-900 leading-snug">Marine Hybrid Electrification & NPI</h4>
-                    <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1 mb-3">Caterpillar Inc. (Current)</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Managing technical commercial demonstration project involving the validation and deployment of **Cat own-designed battery solutions, alternative fuel engine baselines, and complete hybrid energy storage layouts** for next-generation maritime operators.
-                    </p>
-                </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
-                    <span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded font-medium">Alternative Fuel</span>
-                    <span class="bg-amber-50 text-amber-700 text-[10px] px-2 py-0.5 rounded font-bold">Hybrid Application</span>
-                </div>
-            </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">2010 – 2014</div>
+      <div class="timeline-company">Hanjin Shipping</div>
+      <div class="timeline-role">Marine Engineer (3rd → 2nd → 1st Engineer)</div>
+      <div class="timeline-desc">
+        Sailed on 8 container vessels (4,024 TEU to 13,100 TEU) across major global trade routes.
+        Progressed from 3rd Engineer (boilers, HVAC, FWG) to 2nd Engineer (main generators, PMS,
+        fuel treatment) to 1st Engineer (2-stroke propulsion, deck machinery, dry dock specifications).
+      </div>
+      <div class="timeline-tags">
+        <span class="tag">Container Vessels</span>
+        <span class="tag">2-Stroke Propulsion</span>
+        <span class="tag">Power Management</span>
+        <span class="tag">Fuel Treatment</span>
+        <span class="tag">Dry Dock</span>
+      </div>
+    </div>
 
-            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between card-hover">
-                <div>
-                    <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center text-xl mb-4 shadow-sm"><i class="fas fa-filter"></i></div>
-                    <h4 class="text-lg font-bold text-slate-900 leading-snug">Multi-Fleet BWTS Retrofit Program</h4>
-                    <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1 mb-3">Crowley Engineering Services</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Successfully structured engineering supply chains and compliance controls to execute **Ballast Water Treatment System retrofits across 40 internal vessels and 10+ external client vessels**, tracking flawless yard delivery and regulatory approval handovers.
-                    </p>
-                </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
-                    <span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded font-medium">USCG/IMO Compliance</span>
-                    <span class="bg-blue-50 text-blue-700 text-[10px] px-2 py-0.5 rounded font-bold">Fleet Retrofits</span>
-                </div>
-            </div>
+  </div>
+</section>
 
-            <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between card-hover">
-                <div>
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-500 rounded-xl flex items-center justify-center text-xl mb-4 shadow-sm"><i class="fas fa-tools"></i></div>
-                    <h4 class="text-lg font-bold text-slate-900 leading-snug">Global Heavy Engine Overhaul Operations</h4>
-                    <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1 mb-3">Hyundai Global Service</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Supervised advanced technical failure analysis, warranty claim mapping, and multi-team shipyard crews executing major overhauls on heavy **2-stroke propulsion plants and 4-stroke auxiliary engines** across worldwide drydock networks.
-                    </p>
-                </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
-                    <span class="bg-slate-100 text-slate-600 text-[10px] px-2 py-0.5 rounded font-medium">Root Cause Analysis</span>
-                    <span class="bg-emerald-50 text-emerald-700 text-[10px] px-2 py-0.5 rounded font-bold">2ST/4ST Plants</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="divider"></div>
 
-    <section id="skills" class="py-16 bg-slate-900 text-white px-4">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-            
-            <div class="space-y-6">
-                <h3 class="text-2xl font-extrabold text-cyan-400 border-l-4 border-cyan-400 pl-3 tracking-tight">Skillsets & Capabilities</h3>
-                <div class="bg-slate-800/40 p-6 rounded-2xl border border-slate-800 space-y-5">
-                    <div>
-                        <span class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Technical Engineering</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Marine Propulsion Systems</span>
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Marine Hybrid Electrification</span>
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Power Management Systems (PMS)</span>
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Vessel Retrofits & Modification</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Project Leadership</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-cyan-950/40 text-cyan-300 text-xs px-3 py-1 rounded font-medium border border-cyan-900/50">Project Management (PMP)</span>
-                            <span class="bg-cyan-950/40 text-cyan-300 text-xs px-3 py-1 rounded font-medium border border-cyan-900/50">NPI Process Framework</span>
-                            <span class="bg-cyan-950/40 text-cyan-300 text-xs px-3 py-1 rounded font-medium border border-cyan-900/50">Risk & Cost Optimization</span>
-                            <span class="bg-cyan-950/40 text-cyan-300 text-xs px-3 py-1 rounded font-medium border border-cyan-900/50">Supply Chain & Vendor Controls</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Soft Assets</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Bilingual (English & Korean)</span>
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Global Stakeholder Management</span>
-                            <span class="bg-slate-800 text-slate-300 text-xs px-3 py-1 rounded font-medium border border-slate-700">Regimental Team Discipline</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Key Projects</div>
+  <h2 class="section-title">Delivered at <em>scale</em></h2>
 
-            <div class="space-y-6">
-                <h3 class="text-2xl font-extrabold text-cyan-400 border-l-4 border-cyan-400 pl-3 tracking-tight">Education & Licenses</h3>
-                <div class="bg-slate-800/40 p-6 rounded-2xl border border-slate-800 space-y-4">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"><i class="fas fa-medal"></i></div>
-                        <div>
-                            <h5 class="text-sm font-bold text-white">PMP®: Project Management Professional</h5>
-                            <p class="text-xs text-slate-400">Project Management Institute (PMI)</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"><i class="fas fa-anchor"></i></div>
-                        <div>
-                            <h5 class="text-sm font-bold text-white">Marine Engineer License (2nd & 3rd Class)</h5>
-                            <p class="text-xs text-slate-400">Unlimited Horsepower Rating</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4 items-start">
-                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"><i class="fas fa-passport"></i></div>
-                        <div>
-                            <h5 class="text-sm font-bold text-white">TWIC Clearance & Field Credentials</h5>
-                            <p class="text-xs text-slate-400">HHI-HIMSEN Advanced Course | ERRM | RigPass/BOSIET Training</p>
-                        </div>
-                    </div>
-                    <hr class="border-slate-800 my-2">
-                    <div class="flex gap-4 items-start">
-                        <div class="w-10 h-10 bg-slate-800 text-slate-400 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"><i class="fas fa-university"></i></div>
-                        <div>
-                            <h5 class="text-sm font-bold text-white">Korea Maritime & Ocean University</h5>
-                            <p class="text-xs text-cyan-400 font-medium">B.Eng. in Marine System Engineering (2006 - 2010)</p>
-                            <p class="text-xs text-slate-500 mt-1">Completed 4 years of rigorous Regimental Leadership & Discipline Program.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="projects-grid">
+    <div class="project-card fade-in">
+      <div class="project-num">01</div>
+      <div class="project-title">BWTS Fleet Program</div>
+      <div class="project-desc">
+        Led Crowley's entire Ballast Water Treatment System retrofit program —
+        from design and class approval through installation and commissioning
+        across 50+ vessels.
+      </div>
+      <div class="project-highlight">40 internal + 10 external vessels</div>
+    </div>
 
-        </div>
-    </section>
+    <div class="project-card fade-in" style="transition-delay:0.15s">
+      <div class="project-num">02</div>
+      <div class="project-title">Hybrid Marine Power</div>
+      <div class="project-desc">
+        Managing Caterpillar's NPI hybrid demonstration project — integrating
+        Cat diesel engines with battery systems, inverters, and motors for
+        next-generation marine vessels.
+      </div>
+      <div class="project-highlight">Caterpillar Marine Innovation</div>
+    </div>
 
-    <footer class="bg-slate-950 text-slate-600 py-8 text-center text-xs border-t border-slate-900">
-        <p>&copy; 2026 Sangkyu Pak. Ported securely to personal track domains.</p>
-        <p class="mt-1 text-slate-700">Responsive framework configured for cross-platform validation.</p>
-    </footer>
+    <div class="project-card fade-in" style="transition-delay:0.3s">
+      <div class="project-num">03</div>
+      <div class="project-title">Container Fleet Engineering</div>
+      <div class="project-desc">
+        5 years operating and maintaining engine systems aboard Hanjin's
+        global container fleet, from 4,000 to 13,100 TEU vessels across
+        Pacific and Atlantic trade routes.
+      </div>
+      <div class="project-highlight">8 vessels · Global Operations</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-section fade-in">
+    <div class="section-label" style="justify-content:center;">Contact</div>
+    <h2 class="section-title" style="margin-bottom:1rem;">Let's connect</h2>
+    <p style="color:var(--gray); max-width:500px; margin:0 auto; line-height:1.8; font-size:0.95rem;">
+      Open to discussing maritime engineering opportunities,
+      technical collaborations, or industry conversations.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:skpak86@gmail.com" class="contact-link primary">
+        ✉ &nbsp;skpak86@gmail.com
+      </a>
+      <a href="tel:8324213600" class="contact-link">
+        📞 &nbsp;832-421-3600
+      </a>
+      <a href="https://linkedin.com/in/sbrianpak" target="_blank" class="contact-link">
+        🔗 &nbsp;LinkedIn
+      </a>
+      <a href="https://github.com/skpak86-hash/Career" target="_blank" class="contact-link">
+        ⌥ &nbsp;GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Sangkyu Pak · Maritime Professional · Houston, TX</p>
+  <p>Korea Maritime & Ocean University · B.Eng Marine System Engineering</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Stagger timeline items
+  document.querySelectorAll('.timeline-item').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
 
 </body>
 </html>
