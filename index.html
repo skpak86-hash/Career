@@ -682,8 +682,6 @@
     <div class="fade-in" style="transition-delay: 0.2s">
       <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Certifications & Licenses</p>
       <div class="certs-grid" style="grid-template-columns: repeat(3, 1fr)">
-
-        <!-- Marine Engineer License -->
         <div class="cert-card">
           <div style="margin-bottom:0.5rem; font-size:1.4rem;">🛳️</div>
           <div class="cert-name">2nd &amp; 3rd Class Marine Engineer<br>
@@ -691,8 +689,6 @@
             <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span>
           </div>
         </div>
-
-        <!-- PMP Certificate -->
         <div class="cert-card" style="border-color:rgba(201,168,76,0.3);">
           <div style="margin-bottom:0.5rem;">
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:900; letter-spacing:-0.02em;">
@@ -704,15 +700,12 @@
             <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Professional · PMI</span>
           </div>
         </div>
-
-        <!-- HHI-HIMSEN -->
         <div class="cert-card">
           <div class="cert-icon">⚙️</div>
           <div class="cert-name">HHI-HIMSEN<br>
             <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Advanced Engineering Course</span>
           </div>
         </div>
-
         <div class="cert-card">
           <div class="cert-icon">🛡️</div>
           <div class="cert-name">Engine Room<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Resource Management</span></div>
@@ -814,6 +807,10 @@
       <div class="skill-list">
         <span class="skill-pill">Hybrid Marine Systems</span>
         <span class="skill-pill">Battery Integration</span>
+        <span class="skill-pill">Cat Battery</span>
+        <span class="skill-pill">Corvus Battery</span>
+        <span class="skill-pill">Battery Management System</span>
+        <span class="skill-pill">Vessel Integration</span>
         <span class="skill-pill">NPI Program</span>
         <span class="skill-pill">Alternative Fuel</span>
         <span class="skill-pill">System Design</span>
@@ -1072,7 +1069,7 @@
       ctx.lineTo(W, H);
       ctx.closePath();
       const wg = ctx.createLinearGradient(0, yBase-w.amp, 0, H);
-      wg.addColorStop(0,   `rgba(${w.color},${w.alpha})`.replace('${w.color}', w.color.join(',')));
+      wg.addColorStop(0,   `rgba(${w.color.join(',')},${w.alpha})`);
       wg.addColorStop(0.4, `rgba(${w.color.join(',')},${w.alpha*.6})`);
       wg.addColorStop(1,   `rgba(${w.color.join(',')},0)`);
       ctx.fillStyle = wg;
