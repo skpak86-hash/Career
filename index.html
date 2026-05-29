@@ -73,7 +73,6 @@
     overflow: hidden;
   }
 
-  /* Canvas ocean background */
   #ocean-canvas {
     position: absolute;
     inset: 0;
@@ -82,7 +81,6 @@
     z-index: 0;
   }
 
-  /* Dark overlay so text stays readable */
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -92,7 +90,6 @@
       linear-gradient(to bottom, rgba(6,16,32,0.5) 0%, transparent 30%, transparent 70%, rgba(6,16,32,0.7) 100%);
   }
 
-  /* subtle grid on top */
   .hero-grid {
     position: absolute;
     inset: 0;
@@ -685,22 +682,37 @@
     <div class="fade-in" style="transition-delay: 0.2s">
       <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Certifications & Licenses</p>
       <div class="certs-grid" style="grid-template-columns: repeat(3, 1fr)">
+
+        <!-- Marine Engineer License -->
         <div class="cert-card">
           <div style="margin-bottom:0.5rem; font-size:1.4rem;">🛳️</div>
-          <div class="cert-name">2nd &amp; 3rd Class Marine Engineer<br><span style="color:var(--gold);font-size:0.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.1em;">LICENSE</span><br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span></div>
+          <div class="cert-name">2nd &amp; 3rd Class Marine Engineer<br>
+            <span style="color:var(--gold);font-size:0.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.1em;">LICENSE</span><br>
+            <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Unlimited HP</span>
+          </div>
         </div>
+
+        <!-- PMP Certificate -->
         <div class="cert-card" style="border-color:rgba(201,168,76,0.3);">
           <div style="margin-bottom:0.5rem;">
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:900; letter-spacing:-0.02em;">
               <span style="color:#e84b2a;">P</span><span style="color:#00a9e0;">M</span><span style="color:#6b2d8b;">P</span><span style="color:var(--gold); font-size:0.8rem; vertical-align:super;">®</span>
             </span>
           </div>
-          <div class="cert-name">Project Management<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Professional · PMI</span></div>
+          <div class="cert-name">Project Management<br>
+            <span style="color:var(--gold);font-size:0.7rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.1em;">CERTIFICATE</span><br>
+            <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Professional · PMI</span>
+          </div>
         </div>
+
+        <!-- HHI-HIMSEN -->
         <div class="cert-card">
           <div class="cert-icon">⚙️</div>
-          <div class="cert-name">HHI-HIMSEN<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Advanced Course</span></div>
+          <div class="cert-name">HHI-HIMSEN<br>
+            <span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Advanced Engineering Course</span>
+          </div>
         </div>
+
         <div class="cert-card">
           <div class="cert-icon">🛡️</div>
           <div class="cert-name">Engine Room<br><span style="color:var(--gray);font-size:0.75rem;font-family:'Barlow',sans-serif;font-weight:300;">Resource Management</span></div>
@@ -979,19 +991,10 @@
 </footer>
 
 <script>
-/* =============================================
-   ANIMATED OCEAN CANVAS
-   Simulates calm open-water with:
-   - Deep navy base
-   - Multiple sine-wave surface layers
-   - Animated light shimmer / caustics
-   - Drifting highlight streaks
-   - Subtle horizon glow
-============================================= */
 (function() {
   const canvas = document.getElementById('ocean-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H, raf;
+  let W, H;
 
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
@@ -1000,20 +1003,16 @@
   window.addEventListener('resize', resize);
   resize();
 
-  // Wave parameters — calm open sea
   const waves = [
-    { amp: 18, freq: 0.008, speed: 0.0006, phase: 0,    alpha: 0.18, color: [46, 125, 209] },
-    { amp: 12, freq: 0.013, speed: 0.0009, phase: 1.2,  alpha: 0.13, color: [30,  95, 168] },
-    { amp:  8, freq: 0.020, speed: 0.0014, phase: 2.5,  alpha: 0.10, color: [91, 163, 232] },
-    { amp:  5, freq: 0.031, speed: 0.0020, phase: 0.8,  alpha: 0.08, color: [168,203,240] },
-    { amp:  3, freq: 0.048, speed: 0.0030, phase: 3.7,  alpha: 0.06, color: [200,225,255] },
+    { amp: 18, freq: 0.008, speed: 0.0006, phase: 0,   alpha: 0.18, color: [46,125,209] },
+    { amp: 12, freq: 0.013, speed: 0.0009, phase: 1.2, alpha: 0.13, color: [30,95,168] },
+    { amp:  8, freq: 0.020, speed: 0.0014, phase: 2.5, alpha: 0.10, color: [91,163,232] },
+    { amp:  5, freq: 0.031, speed: 0.0020, phase: 0.8, alpha: 0.08, color: [168,203,240] },
+    { amp:  3, freq: 0.048, speed: 0.0030, phase: 3.7, alpha: 0.06, color: [200,225,255] },
   ];
 
-  // Shimmer particles (light caustics)
-  const shimmerCount = 60;
-  const shimmers = Array.from({length: shimmerCount}, () => ({
-    x: Math.random(),
-    y: Math.random(),
+  const shimmers = Array.from({length: 60}, () => ({
+    x: Math.random(), y: Math.random(),
     r: 1 + Math.random() * 3,
     speed: 0.00008 + Math.random() * 0.00015,
     phase: Math.random() * Math.PI * 2,
@@ -1021,7 +1020,6 @@
     alpha: 0.04 + Math.random() * 0.12,
   }));
 
-  // Horizontal light streaks
   const streaks = Array.from({length: 8}, () => ({
     y: 0.3 + Math.random() * 0.55,
     width: 0.08 + Math.random() * 0.25,
@@ -1034,129 +1032,102 @@
 
   function drawOcean() {
     t++;
-
-    // --- Base deep-ocean gradient ---
     const bg = ctx.createLinearGradient(0, 0, 0, H);
-    bg.addColorStop(0,   '#040e1e');  // very deep top
-    bg.addColorStop(0.25,'#071628');  // dark navy
-    bg.addColorStop(0.6, '#0c2240');  // mid ocean
-    bg.addColorStop(0.85,'#0e2d52');  // lighter blue
-    bg.addColorStop(1,   '#0a1e38');  // bottom
+    bg.addColorStop(0,    '#040e1e');
+    bg.addColorStop(0.25, '#071628');
+    bg.addColorStop(0.6,  '#0c2240');
+    bg.addColorStop(0.85, '#0e2d52');
+    bg.addColorStop(1,    '#0a1e38');
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, H);
 
-    // --- Horizon glow ---
-    const horizonY = H * 0.38;
-    const hglow = ctx.createRadialGradient(W * 0.5, horizonY, 0, W * 0.5, horizonY, W * 0.6);
-    hglow.addColorStop(0,   'rgba(30, 90, 160, 0.18)');
-    hglow.addColorStop(0.5, 'rgba(20, 60, 120, 0.08)');
-    hglow.addColorStop(1,   'rgba(0,0,0,0)');
-    ctx.fillStyle = hglow;
+    const hg = ctx.createRadialGradient(W*.5, H*.38, 0, W*.5, H*.38, W*.6);
+    hg.addColorStop(0,   'rgba(30,90,160,0.18)');
+    hg.addColorStop(0.5, 'rgba(20,60,120,0.08)');
+    hg.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.fillStyle = hg;
     ctx.fillRect(0, 0, W, H);
 
-    // --- Light streaks (sunlight on water surface) ---
     streaks.forEach(s => {
       s.x += s.speed;
       if (s.x > 1.3) s.x = -0.3;
-      const cx = s.x * W;
-      const cy = s.y * H;
-      const grad = ctx.createLinearGradient(cx - s.width * W * 0.5, 0, cx + s.width * W * 0.5, 0);
-      grad.addColorStop(0,   'rgba(120,180,255,0)');
-      grad.addColorStop(0.5, `rgba(120,180,255,${s.alpha})`);
-      grad.addColorStop(1,   'rgba(120,180,255,0)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(cx - s.width * W * 0.5, cy - 2, s.width * W, 4 + Math.sin(t * 0.03 + s.y * 10) * 2);
+      const cx = s.x * W, cy = s.y * H;
+      const g = ctx.createLinearGradient(cx - s.width*W*.5, 0, cx + s.width*W*.5, 0);
+      g.addColorStop(0,   'rgba(120,180,255,0)');
+      g.addColorStop(0.5, `rgba(120,180,255,${s.alpha})`);
+      g.addColorStop(1,   'rgba(120,180,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(cx - s.width*W*.5, cy-2, s.width*W, 4 + Math.sin(t*.03+s.y*10)*2);
     });
 
-    // --- Wave layers ---
     waves.forEach((w, i) => {
       w.phase += w.speed;
       const yBase = H * (0.35 + i * 0.13);
-
       ctx.beginPath();
       ctx.moveTo(0, H);
-
       for (let x = 0; x <= W; x += 3) {
-        const y = yBase
-          + Math.sin(x * w.freq + w.phase) * w.amp
-          + Math.sin(x * w.freq * 1.7 + w.phase * 1.3) * (w.amp * 0.4);
+        const y = yBase + Math.sin(x*w.freq+w.phase)*w.amp + Math.sin(x*w.freq*1.7+w.phase*1.3)*(w.amp*.4);
         ctx.lineTo(x, y);
       }
       ctx.lineTo(W, H);
       ctx.closePath();
-
-      const wgrad = ctx.createLinearGradient(0, yBase - w.amp, 0, H);
-      wgrad.addColorStop(0,   `rgba(${w.color[0]},${w.color[1]},${w.color[2]},${w.alpha})`);
-      wgrad.addColorStop(0.4, `rgba(${w.color[0]},${w.color[1]},${w.color[2]},${w.alpha * 0.6})`);
-      wgrad.addColorStop(1,   `rgba(${w.color[0]},${w.color[1]},${w.color[2]},0)`);
-      ctx.fillStyle = wgrad;
+      const wg = ctx.createLinearGradient(0, yBase-w.amp, 0, H);
+      wg.addColorStop(0,   `rgba(${w.color},${w.alpha})`.replace('${w.color}', w.color.join(',')));
+      wg.addColorStop(0.4, `rgba(${w.color.join(',')},${w.alpha*.6})`);
+      wg.addColorStop(1,   `rgba(${w.color.join(',')},0)`);
+      ctx.fillStyle = wg;
       ctx.fill();
-
-      // Wave crest highlight
       ctx.beginPath();
       for (let x = 0; x <= W; x += 3) {
-        const y = yBase
-          + Math.sin(x * w.freq + w.phase) * w.amp
-          + Math.sin(x * w.freq * 1.7 + w.phase * 1.3) * (w.amp * 0.4);
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        const y = yBase + Math.sin(x*w.freq+w.phase)*w.amp + Math.sin(x*w.freq*1.7+w.phase*1.3)*(w.amp*.4);
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
       }
-      ctx.strokeStyle = `rgba(${w.color[0]+40},${w.color[1]+40},${w.color[2]+20},${w.alpha * 0.5})`;
+      ctx.strokeStyle = `rgba(${w.color[0]+40},${w.color[1]+40},${w.color[2]+20},${w.alpha*.5})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     });
 
-    // --- Caustic shimmer dots ---
     shimmers.forEach(s => {
       s.phase += s.speed;
-      s.x    += s.drift;
+      s.x += s.drift;
       if (s.x > 1.05) s.x = -0.05;
       if (s.x < -0.05) s.x = 1.05;
-
-      const pulse = 0.5 + 0.5 * Math.sin(s.phase * 60);
-      const cx = s.x * W;
-      const cy = s.y * H;
-      const radius = s.r * (0.7 + 0.3 * pulse);
-      const alpha  = s.alpha * (0.4 + 0.6 * pulse);
-
-      const sg = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 4);
-      sg.addColorStop(0,   `rgba(180,220,255,${alpha})`);
-      sg.addColorStop(0.4, `rgba(100,170,240,${alpha * 0.5})`);
+      const pulse = .5 + .5*Math.sin(s.phase*60);
+      const cx = s.x*W, cy = s.y*H;
+      const r = s.r*(.7+.3*pulse);
+      const a = s.alpha*(.4+.6*pulse);
+      const sg = ctx.createRadialGradient(cx,cy,0,cx,cy,r*4);
+      sg.addColorStop(0,   `rgba(180,220,255,${a})`);
+      sg.addColorStop(0.4, `rgba(100,170,240,${a*.5})`);
       sg.addColorStop(1,   'rgba(0,0,0,0)');
       ctx.fillStyle = sg;
       ctx.beginPath();
-      ctx.arc(cx, cy, radius * 4, 0, Math.PI * 2);
+      ctx.arc(cx, cy, r*4, 0, Math.PI*2);
       ctx.fill();
     });
 
-    // --- Subtle surface ripple lines ---
     for (let i = 0; i < 6; i++) {
-      const ry = H * (0.45 + i * 0.09) + Math.sin(t * 0.004 + i) * 6;
-      const rAlpha = 0.03 + 0.02 * Math.sin(t * 0.007 + i * 1.3);
+      const ry = H*(.45+i*.09) + Math.sin(t*.004+i)*6;
+      const ra = .03 + .02*Math.sin(t*.007+i*1.3);
       ctx.beginPath();
       for (let x = 0; x <= W; x += 4) {
-        const y = ry + Math.sin(x * 0.025 + t * 0.008 + i * 0.7) * 3;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        const y = ry + Math.sin(x*.025+t*.008+i*.7)*3;
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
       }
-      ctx.strokeStyle = `rgba(150,200,255,${rAlpha})`;
+      ctx.strokeStyle = `rgba(150,200,255,${ra})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
 
-    raf = requestAnimationFrame(drawOcean);
+    requestAnimationFrame(drawOcean);
   }
 
   drawOcean();
 })();
 
-/* =============================================
-   SCROLL ANIMATIONS
-============================================= */
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
-
 document.querySelectorAll('.fade-in, .timeline-item').forEach(el => observer.observe(el));
 document.querySelectorAll('.timeline-item').forEach((item, i) => {
   item.style.transitionDelay = `${i * 0.1}s`;
